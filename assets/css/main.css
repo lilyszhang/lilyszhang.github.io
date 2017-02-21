@@ -1833,8 +1833,8 @@
 		}
 
 	strong, b {
-		font-weight: 600;
-		color: #5b5b5b;
+		/*font-weight: 600;*/
+		color: #4eb980;
 	}
 
 	em, i {
