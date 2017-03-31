@@ -362,11 +362,6 @@
 	Turntable.prototype._createAnalyser = function() {
 		this.analyser = this.audioCtx.createAnalyser();
 
-		// set up canvas context for visualizer
-		this.canvas = document.createElement('canvas');
-		this.ui.visualizer.appendChild(this.canvas);
-		this.canvasCtx = this.canvas.getContext('2d');
-
 		// Set canvas sizes
 		this.canvasSize = {width : this.ui.visualizer.clientWidth, height : this.ui.visualizer.clientHeight};
 
