@@ -169,9 +169,6 @@
 			max : this._getAngle(this.ui.recordCover)
 		}
 
-		// Create the audio analyser and the canvas element to visualize the waveform.
-		this._createAnalyser();
-
 		// Init/Bind events.
 		this._initEvents();
 	}
@@ -321,14 +318,6 @@
 		// If bufferOffset is passed then start playing it from then on.
 		// Also, if starting from the beginning add a delay of [bufferDelay] seconds before playing the track.
 		this.source.start(bufferOffset && bufferOffset > 0 ? this.audioCtx.currentTime : this.audioCtx.currentTime + this.bufferDelay, bufferOffset ? bufferOffset : 0);
-		// start analysing
-		var self = this;
-		if( this.analyserTimeout ) {
-			clearTimeout(this.analyserTimeout);
-		}
-		this.analyserTimeout = setTimeout(function() { self._analyse(); }, bufferOffset && bufferOffset > 0 ? 0 : this.bufferDelay*1000);
-		// When the current buffer ends playing, jump to the next buffer in the list.
-		var self = this;
 
 		this.sourceEnded = function() {
 			// If isDragging is true it means the User lifted the tonearm.
@@ -396,8 +385,6 @@
 		this.currentBuffer = 1;
 		// Stop the noise/scratch effect.
 		this._stopNoise();
-		// Stop analysing.
-		this._stopAnalysing();
 		// stop the animation of the arm.
 		dynamics.stop(this.ui.arm);
 		// If the action causing it to stop was the User lifting up the tonearm, then the tonearm stays where it was and the platter continues to rotate.
@@ -407,9 +394,6 @@
 			this._stopPlatterRotation();
 			// Control the play/stop ctrls status.
 			this._ctrlPlay('stop');
-		}
-		if( this.analyserTimeout ) {
-			clearTimeout(this.analyserTimeout);
 		}
 	};
 
@@ -524,14 +508,10 @@
 			// readjust the nodes´ connections.
 			this.source.disconnect();
 			this.convolver.disconnect();
-			this.source.connect(this.analyser);
-			this.analyser.connect(this.speakers);
 		}
 		else {
 			// Set up the Convolver buffer and adjust the nodes´ connections.
 			this.convolver.buffer = this.options.effectBuffers[this.effect];
-			this.source.connect(this.analyser);
-			this.analyser.connect(this.convolver);
 			this.convolver.connect(this.speakers);
 		}
 	};
