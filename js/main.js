@@ -313,12 +313,23 @@
 		this.source = this.audioCtx.createBufferSource();
 		// Set up its buffer.
 		this.source.buffer = this._getCurrentSide().bufferList['buffer' + this.currentBuffer];
+		// Update song name.
+		this.infoElems.song.innerHTML = this._getSongName(this._getCurrentSide().bufferNames[0]['buffer' + this.currentBuffer]);
 		// Set up the room effect and the right audio nodes´ connections.
 		this.setEffect();
 		// Start playing the current buffer.
 		// If bufferOffset is passed then start playing it from then on.
 		// Also, if starting from the beginning add a delay of [bufferDelay] seconds before playing the track.
 		this.source.start(bufferOffset && bufferOffset > 0 ? this.audioCtx.currentTime : this.audioCtx.currentTime + this.bufferDelay, bufferOffset ? bufferOffset : 0);
+		// start analysing
+		var self = this;
+		if( this.analyserTimeout ) {
+			clearTimeout(this.analyserTimeout);
+		}
+		this.analyserTimeout = setTimeout(function() { self._analyse(); }, bufferOffset && bufferOffset > 0 ? 0 : this.bufferDelay*1000);
+		// When the current buffer ends playing, jump to the next buffer in the list.
+		var self = this;
+
 		this.sourceEnded = function() {
 			// If isDragging is true it means the User lifted the tonearm.
 			if( self.isDragging ) return;
@@ -350,6 +361,17 @@
 	 */
 	Turntable.prototype._createAnalyser = function() {
 		this.analyser = this.audioCtx.createAnalyser();
+
+		// set up canvas context for visualizer
+		this.canvas = document.createElement('canvas');
+		this.ui.visualizer.appendChild(this.canvas);
+		this.canvasCtx = this.canvas.getContext('2d');
+
+		// Set canvas sizes
+		this.canvasSize = {width : this.ui.visualizer.clientWidth, height : this.ui.visualizer.clientHeight};
+
+		this.canvas.setAttribute('width', this.canvasSize.width);
+		this.canvas.setAttribute('height', this.canvasSize.height);
 	};
 
 	/**
@@ -358,7 +380,7 @@
 	 * https://github.com/mdn/voice-change-o-matic/blob/gh-pages/scripts/app.js#L123-L167
 	 * https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API
 	 */
-	/*Turntable.prototype._analyse = function() {
+	Turntable.prototype._analyse = function() {
 		window.cancelAnimationFrame(this.drawVisual);
 
 		this.analyser.fftSize = 2048;
@@ -407,10 +429,10 @@
 	/**
 	 * Stops the waveform/oscilloscope.
 	 */
-	/*Turntable.prototype._stopAnalysing = function() {
+	Turntable.prototype._stopAnalysing = function() {
 		window.cancelAnimationFrame(this.drawVisual);
 		this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-	};*/
+	};
 
 	/**
 	 * Turns on everything else: tonearm rotation, platter rotation and noise/scratch sound.
