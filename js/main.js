@@ -321,15 +321,6 @@
 		// If bufferOffset is passed then start playing it from then on.
 		// Also, if starting from the beginning add a delay of [bufferDelay] seconds before playing the track.
 		this.source.start(bufferOffset && bufferOffset > 0 ? this.audioCtx.currentTime : this.audioCtx.currentTime + this.bufferDelay, bufferOffset ? bufferOffset : 0);
-		// start analysing
-		var self = this;
-		if( this.analyserTimeout ) {
-			clearTimeout(this.analyserTimeout);
-		}
-		this.analyserTimeout = setTimeout(function() { self._analyse(); }, bufferOffset && bufferOffset > 0 ? 0 : this.bufferDelay*1000);
-		// When the current buffer ends playing, jump to the next buffer in the list.
-		var self = this;
-
 		this.sourceEnded = function() {
 			// If isDragging is true it means the User lifted the tonearm.
 			if( self.isDragging ) return;
