@@ -347,7 +347,7 @@ html.js,
 	padding: 20vmin 2em;
 	text-align: center;
 	color: #595867;
-	background: #302f3c;
+	background: #8EE3EF;
 }
 
 .content__title {
@@ -399,7 +399,7 @@ html.js,
 	pointer-events: none;
 	opacity: 0;
 	border-radius: 50%;
-	background: #45918e;
+	background: #8EE3EF;
 	-webkit-transform: scale(0.001);
 	transform: scale(0.001);
 }
@@ -940,12 +940,6 @@ we use margins because transforms will be applied dynamically */
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-box-align: end;
-}
-
-.effects__irs {
-	margin: 0.5em 0 0;
-	padding: 1em 0 0;
-	border-top: 1px solid #80cbd6;
 }
 
 .effects__button {
