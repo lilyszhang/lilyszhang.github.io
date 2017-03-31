@@ -37,7 +37,7 @@ a {
 
 a:hover,
 a:focus {
-	color: #349770;
+	color: #8EE3EF;
 }
 
 
@@ -242,15 +242,15 @@ html.js,
 }
 
 .grid__item--deco-1::before {
-	content: 'Homie';
+	content: 'Stephanie';
 }
 
 .grid__item--deco-2::before {
-	content: 'Lover';
+	content: 'Lynn';
 }
 
 .grid__item--deco-3::before {
-	content: 'Friend';
+	content: 'Wert';
 }
 
 
@@ -693,7 +693,7 @@ html.js,
 	width: calc(90vmin + (0.2 * 80vmin));
 	height: 90vmin;
 	border-radius: 0.15em;
-	background: #45bd94;
+	background: #8EE3EF;
 	-webkit-transform: translate3d(-50%, -50%, 0) translate3d(calc(0.06 * 80vmin), 0, 0);
 	transform: translate3d(-50%, -50%, 0) translate3d(calc(0.06 * 80vmin), 0, 0);
 	pointer-events: none;
@@ -945,7 +945,7 @@ we use margins because transforms will be applied dynamically */
 .effects__irs {
 	margin: 0.5em 0 0;
 	padding: 1em 0 0;
-	border-top: 1px solid #379676;
+	border-top: 1px solid #80cbd6;
 }
 
 .effects__button {
@@ -957,7 +957,7 @@ we use margins because transforms will be applied dynamically */
 	height: 4em;
 	margin: 0.5em 0;
 	padding: 1em;
-	color: #37a07c;
+	color: #8EE3EF;
 	border: 0;
 	background: none;
 	-webkit-box-flex: 0;
