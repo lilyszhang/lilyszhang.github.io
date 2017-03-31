@@ -361,12 +361,6 @@
 	 */
 	Turntable.prototype._createAnalyser = function() {
 		this.analyser = this.audioCtx.createAnalyser();
-
-		// Set canvas sizes
-		this.canvasSize = {width : this.ui.visualizer.clientWidth, height : this.ui.visualizer.clientHeight};
-
-		this.canvas.setAttribute('width', this.canvasSize.width);
-		this.canvas.setAttribute('height', this.canvasSize.height);
 	};
 
 	/**
