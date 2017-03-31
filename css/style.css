@@ -1,5 +1,5 @@
 @font-face {
-	font-family: 'nexa_boldregular';
+	font-family: 'Raleway';
 	font-weight: bold;
 	font-style: normal;
 	src: url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.eot');
@@ -21,10 +21,10 @@
 }
 
 body {
-	font-family: 'Lucida Sans Typewriter', 'Lucida Console', monaco, 'Bitstream Vera Sans Mono', monospace;
+	font-family: "Raleway", sans-serif;
 	overflow-x: hidden;
 	color: #474283;
-	background: #45cb96;
+	background: #8EE3EF;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -118,7 +118,7 @@ html.js,
 }
 
 .page-header__title {
-	font-family: 'nexa_boldregular', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size: 7vmin;
 	line-height: 1.25;
 	margin: 0;
@@ -131,52 +131,8 @@ html.js,
 	display: block;
 	max-width: calc(50vw - 5em);
 	margin: 1em 0 0 5px;
-	color: #fff;
+	color: #474283;
 }
-
-/* Codrops navigation */
-
-.codrops-links {
-	font-size: 0.75em;
-	position: relative;
-	display: inline-block;
-	margin: 2.5em 0 0 0;
-	text-align: center;
-	white-space: nowrap;
-}
-
-.codrops-links::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 1px;
-	height: 100%;
-	background: #474283;
-	-webkit-transform: translateY(-50%) rotate3d(0, 0, 1, 22.5deg);
-	transform: translateY(-50%) rotate3d(0, 0, 1, 22.5deg);
-}
-
-.codrops-icon {
-	display: inline-block;
-	width: 1.5em;
-	margin: 0.25em 0.5em;
-	text-decoration: none;
-	pointer-events: auto;
-}
-
-@media screen and (max-width: 55em) {
-	.page-header {
-		padding: 2em;
-	}
-	.page-header__title {
-		font-size: 8vmin;
-	}
-	.page-header__subtitle {
-		max-width: none;
-	}
-}
-
 
 /* grid */
 
@@ -276,7 +232,7 @@ html.js,
 /* grid decoration */
 
 .grid__item--deco::before {
-	font-family: 'nexa_boldregular', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size: 15em;
 	position: absolute;
 	z-index: -1;
@@ -286,15 +242,15 @@ html.js,
 }
 
 .grid__item--deco-1::before {
-	content: '1985';
+	content: 'Homie';
 }
 
 .grid__item--deco-2::before {
-	content: '1974';
+	content: 'Lover';
 }
 
 .grid__item--deco-3::before {
-	content: '2015';
+	content: 'Friend';
 }
 
 
@@ -395,7 +351,7 @@ html.js,
 }
 
 .content__title {
-	font-family: 'nexa_boldregular', sans-serif;
+	font-family: 'Raleway', sans-serif;
 	font-size: 1.25em;
 }
 
@@ -524,7 +480,7 @@ html.js,
 
 .number,
 .artist--single {
-	font-family: 'nexa_boldregular', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 
 .number {
@@ -776,7 +732,7 @@ html.js,
 }
 
 .artist--player {
-	font-family: 'nexa_boldregular', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 
 .artist--player {
@@ -907,7 +863,7 @@ html.js,
 }
 
 
-/* The label is 32.4358% of the total width of the vinyl disc; 
+/* The label is 32.4358% of the total width of the vinyl disc;
 this means that we can push the tonearm a maximum of half of that (16%);
 we use margins because transforms will be applied dynamically */
 
