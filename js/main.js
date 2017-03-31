@@ -830,10 +830,6 @@
 			})
 		});
 
-		// Rotate record.
-		this.ctrls.rotate.addEventListener('click', function() {
-			self._ctrlRotate();
-		});
 
 		this.touchStartFix = function() {
 			var buffer = self.audioCtx.createBuffer(1, 1, 22050);
@@ -907,22 +903,6 @@
 			this.setEffect(fx);
 		}
 	};
-
-	/**
-	 * Rotate the record.
-	 */
-	Turntable.prototype._ctrlRotate = function(ctrl, fx) {
-		if( this.isPlatterRotating ) {
-			this.stop();
-		}
-		this.currentSide = this.currentSide === 1 ? 2 : 1;
-		if( classie.has(this.ui.player, 'player__element--lp-flip') ) {
-			classie.remove(this.ui.player, 'player__element--lp-flip');
-		}
-		else {
-			classie.add(this.ui.player, 'player__element--lp-flip');
-		}
-	}
 
 
 	/**
