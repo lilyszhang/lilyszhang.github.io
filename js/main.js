@@ -169,6 +169,9 @@
 			max : this._getAngle(this.ui.recordCover)
 		}
 
+		// Create the audio analyser and the canvas element to visualize the waveform.
+		this._createAnalyser();
+
 		// Init/Bind events.
 		this._initEvents();
 	}
@@ -310,12 +313,22 @@
 		this.source = this.audioCtx.createBufferSource();
 		// Set up its buffer.
 		this.source.buffer = this._getCurrentSide().bufferList['buffer' + this.currentBuffer];
+		// Update song name.
+		this.infoElems.song.innerHTML = this._getSongName(this._getCurrentSide().bufferNames[0]['buffer' + this.currentBuffer]);
 		// Set up the room effect and the right audio nodes´ connections.
 		this.setEffect();
 		// Start playing the current buffer.
 		// If bufferOffset is passed then start playing it from then on.
 		// Also, if starting from the beginning add a delay of [bufferDelay] seconds before playing the track.
 		this.source.start(bufferOffset && bufferOffset > 0 ? this.audioCtx.currentTime : this.audioCtx.currentTime + this.bufferDelay, bufferOffset ? bufferOffset : 0);
+		// start analysing
+		var self = this;
+		if( this.analyserTimeout ) {
+			clearTimeout(this.analyserTimeout);
+		}
+		this.analyserTimeout = setTimeout(function() { self._analyse(); }, bufferOffset && bufferOffset > 0 ? 0 : this.bufferDelay*1000);
+		// When the current buffer ends playing, jump to the next buffer in the list.
+		var self = this;
 
 		this.sourceEnded = function() {
 			// If isDragging is true it means the User lifted the tonearm.
@@ -335,6 +348,91 @@
 		//this.source.addEventListener('ended', this.sourceEnded);
 		this.source.onended = this.sourceEnded;
 	};
+
+	/**
+	 * Gets the song name from a song url. (for this demo the url is "mp3/songname.mp3")
+	 */
+	Turntable.prototype._getSongName = function(url) {
+		return url.substring(4, url.indexOf('.mp3'));
+	};
+
+	/**
+	 * Creates the analyser and canvas element.
+	 */
+	Turntable.prototype._createAnalyser = function() {
+		this.analyser = this.audioCtx.createAnalyser();
+
+		// set up canvas context for visualizer
+		this.canvas = document.createElement('canvas');
+		this.ui.visualizer.appendChild(this.canvas);
+		this.canvasCtx = this.canvas.getContext('2d');
+
+		// Set canvas sizes
+		this.canvasSize = {width : this.ui.visualizer.clientWidth, height : this.ui.visualizer.clientHeight};
+
+		this.canvas.setAttribute('width', this.canvasSize.width);
+		this.canvas.setAttribute('height', this.canvasSize.height);
+	};
+
+	/**
+	 * Shows the waveform/oscilloscope.
+	 * based on :
+	 * https://github.com/mdn/voice-change-o-matic/blob/gh-pages/scripts/app.js#L123-L167
+	 * https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API
+	 */
+	/*Turntable.prototype._analyse = function() {
+		window.cancelAnimationFrame(this.drawVisual);
+
+		this.analyser.fftSize = 2048;
+		var bufferLength = this.analyser.frequencyBinCount,
+			dataArray = new Uint8Array(bufferLength),
+			WIDTH = this.canvasSize.width,
+  			HEIGHT = this.canvasSize.height,
+  			self = this;
+
+		this.canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+
+		var draw = function() {
+			self.drawVisual = requestAnimationFrame(draw);
+			self.analyser.getByteTimeDomainData(dataArray);
+
+			self.canvasCtx.fillStyle = '#45bd94';
+			self.canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+			self.canvasCtx.lineWidth = 1;
+			self.canvasCtx.strokeStyle = '#474283';
+
+			self.canvasCtx.beginPath();
+
+			var sliceWidth = WIDTH * 1.0 / bufferLength;
+			var x = 0;
+
+			for(var i = 0; i < bufferLength; i++) {
+				var v = dataArray[i] / 128.0,
+					y = v * HEIGHT/2;
+
+				if(i === 0) {
+					self.canvasCtx.moveTo(x, y);
+				} else {
+					self.canvasCtx.lineTo(x, y);
+				}
+
+				x += sliceWidth;
+			}
+
+			self.canvasCtx.lineTo(WIDTH, HEIGHT/2);
+			self.canvasCtx.stroke();
+		};
+		draw();
+	};*/
+
+	/**
+	 * Stops the waveform/oscilloscope.
+	 */
+	/*Turntable.prototype._stopAnalysing = function() {
+		window.cancelAnimationFrame(this.drawVisual);
+		this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+	};*/
 
 	/**
 	 * Turns on everything else: tonearm rotation, platter rotation and noise/scratch sound.
@@ -383,6 +481,8 @@
 		this.currentBuffer = 1;
 		// Stop the noise/scratch effect.
 		this._stopNoise();
+		// Stop analysing.
+		this._stopAnalysing();
 		// stop the animation of the arm.
 		dynamics.stop(this.ui.arm);
 		// If the action causing it to stop was the User lifting up the tonearm, then the tonearm stays where it was and the platter continues to rotate.
@@ -392,6 +492,9 @@
 			this._stopPlatterRotation();
 			// Control the play/stop ctrls status.
 			this._ctrlPlay('stop');
+		}
+		if( this.analyserTimeout ) {
+			clearTimeout(this.analyserTimeout);
 		}
 	};
 
@@ -506,10 +609,14 @@
 			// readjust the nodes´ connections.
 			this.source.disconnect();
 			this.convolver.disconnect();
+			this.source.connect(this.analyser);
+			this.analyser.connect(this.speakers);
 		}
 		else {
 			// Set up the Convolver buffer and adjust the nodes´ connections.
 			this.convolver.buffer = this.options.effectBuffers[this.effect];
+			this.source.connect(this.analyser);
+			this.analyser.connect(this.convolver);
 			this.convolver.connect(this.speakers);
 		}
 	};
