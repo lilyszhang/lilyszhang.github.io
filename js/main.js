@@ -923,7 +923,6 @@
 			year : this.year.innerHTML,
 			sides : {
 				side1 : this.wrapper.getAttribute('data-side1') ? this.wrapper.getAttribute('data-side1').split(',') : [],
-				side2 : this.wrapper.getAttribute('data-side2') ? this.wrapper.getAttribute('data-side2').split(',') : [],
 			}
 		};
 	}
