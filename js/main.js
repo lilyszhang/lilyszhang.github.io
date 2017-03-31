@@ -361,7 +361,7 @@
 
 		this.canvas.setAttribute('width', this.canvasSize.width);
 		this.canvas.setAttribute('height', this.canvasSize.height);
-	};
+
 
 	/**
 	 * Turns on everything else: tonearm rotation, platter rotation and noise/scratch sound.
