@@ -830,7 +830,6 @@
 			})
 		});
 
-
 		this.touchStartFix = function() {
 			var buffer = self.audioCtx.createBuffer(1, 1, 22050);
 			var source = self.audioCtx.createBufferSource();
@@ -905,6 +904,7 @@
 	};
 
 
+
 	/**
 	 * Record obj.
 	 */
@@ -923,6 +923,7 @@
 			year : this.year.innerHTML,
 			sides : {
 				side1 : this.wrapper.getAttribute('data-side1') ? this.wrapper.getAttribute('data-side1').split(',') : [],
+				side2 : this.wrapper.getAttribute('data-side2') ? this.wrapper.getAttribute('data-side2').split(',') : [],
 			}
 		};
 	}
