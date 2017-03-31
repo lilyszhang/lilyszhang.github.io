@@ -22,7 +22,7 @@ body {
 	font-family: 'Raleway', sans-serif;
 	overflow-x: hidden;
 	color: #474283;
-	background: #45cb96;
+	background: #8EE3EF;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -35,7 +35,7 @@ a {
 
 a:hover,
 a:focus {
-	color: #349770;
+	color: #23b0c4;
 }
 
 
@@ -735,7 +735,7 @@ html.js,
 	width: calc(90vmin + (0.2 * 80vmin));
 	height: 90vmin;
 	border-radius: 0.15em;
-	background: #45bd94;
+	background: #8EE3EF;
 	-webkit-transform: translate3d(-50%, -50%, 0) translate3d(calc(0.06 * 80vmin), 0, 0);
 	transform: translate3d(-50%, -50%, 0) translate3d(calc(0.06 * 80vmin), 0, 0);
 	pointer-events: none;
@@ -999,7 +999,7 @@ we use margins because transforms will be applied dynamically */
 	height: 4em;
 	margin: 0.5em 0;
 	padding: 1em;
-	color: #37a07c;
+	color: #23b0c4;
 	border: 0;
 	background: none;
 	-webkit-box-flex: 0;
