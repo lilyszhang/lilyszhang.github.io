@@ -424,7 +424,7 @@
 			self.canvasCtx.stroke();
 		};
 		draw();
-	};*/
+	};
 
 	/**
 	 * Stops the waveform/oscilloscope.

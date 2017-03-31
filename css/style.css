@@ -714,6 +714,14 @@ html.js,
 	pointer-events: none;
 }
 
+.song {
+	font-size: 0.7em;
+	position: absolute;
+	top: calc(38px + 2.5vmin);
+	right: 4vmin;
+	max-width: calc(50vw - 4vmin);
+	text-align: right;
+}
 
 .player-info {
 	position: absolute;
