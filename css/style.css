@@ -408,6 +408,7 @@ html.js,
 .single {
 	position: relative;
 	min-height: 100vh;
+	background: #8EE3EF;
 }
 
 .no-js .single {
@@ -677,6 +678,7 @@ html.js,
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	background: #8EE3EF;
 }
 
 .view--player.view--current .control-button--back {
@@ -704,6 +706,7 @@ html.js,
 	width: 185px;
     height: 25px;
 	border: 1px solid;
+	background: #8EE3EF;
 }
 
 .song {
