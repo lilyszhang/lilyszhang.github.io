@@ -684,6 +684,7 @@ html.js,
 .view--player.view--current .control-button--back {
 	-webkit-transition-delay: 0.5s;
 	transition-delay: 0.5s;
+	background: #8EE3EF;
 }
 
 .player-stand {
@@ -716,6 +717,7 @@ html.js,
 	right: 4vmin;
 	max-width: calc(50vw - 4vmin);
 	text-align: right;
+	background: #8EE3EF;
 }
 
 .player-info {
@@ -742,12 +744,14 @@ html.js,
 	line-height: 0.8;
 	margin: 0 0 0.25em 0;
 	white-space: nowrap;
+	background: #8EE3EF;
 }
 
 .title--player {
 	font-size: 3vmin;
 	font-weight: normal;
 	margin: 0.25em 0 0;
+	background: #8EE3EF;
 }
 
 .year--player {
@@ -772,6 +776,7 @@ html.js,
 	width: 80vmin;
 	height: 80vmin;
 	margin: -40vmin 0 0 -40vmin;
+	background: #8EE3EF;
 }
 
 .player__element svg,
