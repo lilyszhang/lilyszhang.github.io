@@ -313,8 +313,6 @@
 		this.source = this.audioCtx.createBufferSource();
 		// Set up its buffer.
 		this.source.buffer = this._getCurrentSide().bufferList['buffer' + this.currentBuffer];
-		// Update song name.
-		this.infoElems.song.innerHTML = this._getSongName(this._getCurrentSide().bufferNames[0]['buffer' + this.currentBuffer]);
 		// Set up the room effect and the right audio nodes´ connections.
 		this.setEffect();
 		// Start playing the current buffer.
