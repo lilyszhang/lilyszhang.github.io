@@ -11,7 +11,7 @@
 }
 
 .tester {
-	color: #8EE3EF;
+	color: #8EE3EF ! important;
 }
 
 .hidden {
