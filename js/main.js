@@ -380,7 +380,7 @@
 	 * https://github.com/mdn/voice-change-o-matic/blob/gh-pages/scripts/app.js#L123-L167
 	 * https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Visualizations_with_Web_Audio_API
 	 */
-	Turntable.prototype._analyse = function() {
+	/*Turntable.prototype._analyse = function() {
 		window.cancelAnimationFrame(this.drawVisual);
 
 		this.analyser.fftSize = 2048;
@@ -424,15 +424,15 @@
 			self.canvasCtx.stroke();
 		};
 		draw();
-	};
+	};*/
 
 	/**
 	 * Stops the waveform/oscilloscope.
 	 */
-	Turntable.prototype._stopAnalysing = function() {
+	/*Turntable.prototype._stopAnalysing = function() {
 		window.cancelAnimationFrame(this.drawVisual);
 		this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-	};
+	};*/
 
 	/**
 	 * Turns on everything else: tonearm rotation, platter rotation and noise/scratch sound.
@@ -1379,7 +1379,7 @@
 		dynamics.css(expanderEl, { opacity: 1, left : position.x, top : position.y, backgroundColor : '#8EE3EF', scale : 0 });
 		dynamics.animate(expanderEl, {
 			scale : 1.5,
-			backgroundColor : '#8EE3EF' 
+			backgroundColor : '#8EE3EF'
 		}, {
 			duration : 500,
 			type : dynamics.easeOut,
