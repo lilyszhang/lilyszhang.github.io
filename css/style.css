@@ -724,6 +724,7 @@ html.js,
 	max-width: 50vw;
 	padding: 9vmin 0 0 9vmin;
 	pointer-events: none;
+	background: #8EE3EF;
 }
 
 .year--player,
@@ -762,6 +763,7 @@ html.js,
 	width: 100%;
 	height: 100%;
 	pointer-events: none;
+	background: #8EE3EF;
 }
 
 .player__element {
