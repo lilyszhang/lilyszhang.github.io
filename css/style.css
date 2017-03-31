@@ -678,6 +678,7 @@ html.js,
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	background: inherit;
 }
 
 .view--player.view--current .control-button--back {
