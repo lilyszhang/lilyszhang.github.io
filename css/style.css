@@ -2,7 +2,7 @@
 	font-family: 'Raleway';
 	font-weight: bold;
 	font-style: normal;
-	}
+}
 
 *,
 *::after,
@@ -19,10 +19,10 @@
 }
 
 body {
-	font-family: "Raleway", sans-serif;
+	font-family: 'Raleway', sans-serif;
 	overflow-x: hidden;
 	color: #474283;
-	background: #8EE3EF;
+	background: #45cb96;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -35,7 +35,7 @@ a {
 
 a:hover,
 a:focus {
-	color: #8EE3EF;
+	color: #349770;
 }
 
 
@@ -129,8 +129,52 @@ html.js,
 	display: block;
 	max-width: calc(50vw - 5em);
 	margin: 1em 0 0 5px;
-	color: #474283;
+	color: #fff;
 }
+
+/* Codrops navigation */
+
+.codrops-links {
+	font-size: 0.75em;
+	position: relative;
+	display: inline-block;
+	margin: 2.5em 0 0 0;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.codrops-links::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 1px;
+	height: 100%;
+	background: #474283;
+	-webkit-transform: translateY(-50%) rotate3d(0, 0, 1, 22.5deg);
+	transform: translateY(-50%) rotate3d(0, 0, 1, 22.5deg);
+}
+
+.codrops-icon {
+	display: inline-block;
+	width: 1.5em;
+	margin: 0.25em 0.5em;
+	text-decoration: none;
+	pointer-events: auto;
+}
+
+@media screen and (max-width: 55em) {
+	.page-header {
+		padding: 2em;
+	}
+	.page-header__title {
+		font-size: 8vmin;
+	}
+	.page-header__subtitle {
+		max-width: none;
+	}
+}
+
 
 /* grid */
 
@@ -240,15 +284,15 @@ html.js,
 }
 
 .grid__item--deco-1::before {
-	content: 'Stephanie';
+	content: '';
 }
 
 .grid__item--deco-2::before {
-	content: 'Lynn';
+	content: '';
 }
 
 .grid__item--deco-3::before {
-	content: 'Wert';
+	content: '';
 }
 
 
@@ -345,7 +389,7 @@ html.js,
 	padding: 20vmin 2em;
 	text-align: center;
 	color: #595867;
-	background: #8EE3EF;
+	background: #302f3c;
 }
 
 .content__title {
@@ -397,7 +441,7 @@ html.js,
 	pointer-events: none;
 	opacity: 0;
 	border-radius: 50%;
-	background: #8EE3EF;
+	background: #45918e;
 	-webkit-transform: scale(0.001);
 	transform: scale(0.001);
 }
@@ -408,7 +452,6 @@ html.js,
 .single {
 	position: relative;
 	min-height: 100vh;
-	background: #8EE3EF;
 }
 
 .no-js .single {
@@ -678,13 +721,11 @@ html.js,
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	background: inherit;
 }
 
 .view--player.view--current .control-button--back {
 	-webkit-transition-delay: 0.5s;
 	transition-delay: 0.5s;
-	background: #8EE3EF;
 }
 
 .player-stand {
@@ -694,7 +735,7 @@ html.js,
 	width: calc(90vmin + (0.2 * 80vmin));
 	height: 90vmin;
 	border-radius: 0.15em;
-	background: #8EE3EF;
+	background: #45bd94;
 	-webkit-transform: translate3d(-50%, -50%, 0) translate3d(calc(0.06 * 80vmin), 0, 0);
 	transform: translate3d(-50%, -50%, 0) translate3d(calc(0.06 * 80vmin), 0, 0);
 	pointer-events: none;
@@ -707,7 +748,6 @@ html.js,
 	width: 185px;
     height: 25px;
 	border: 1px solid;
-	background: #8EE3EF;
 }
 
 .song {
@@ -717,7 +757,6 @@ html.js,
 	right: 4vmin;
 	max-width: calc(50vw - 4vmin);
 	text-align: right;
-	background: #8EE3EF;
 }
 
 .player-info {
@@ -726,7 +765,6 @@ html.js,
 	max-width: 50vw;
 	padding: 9vmin 0 0 9vmin;
 	pointer-events: none;
-	background: #8EE3EF;
 }
 
 .year--player,
@@ -744,14 +782,12 @@ html.js,
 	line-height: 0.8;
 	margin: 0 0 0.25em 0;
 	white-space: nowrap;
-	background: #8EE3EF;
 }
 
 .title--player {
 	font-size: 3vmin;
 	font-weight: normal;
 	margin: 0.25em 0 0;
-	background: #8EE3EF;
 }
 
 .year--player {
@@ -776,7 +812,6 @@ html.js,
 	width: 80vmin;
 	height: 80vmin;
 	margin: -40vmin 0 0 -40vmin;
-	background: #8EE3EF;
 }
 
 .player__element svg,
@@ -949,6 +984,12 @@ we use margins because transforms will be applied dynamically */
 	-webkit-box-align: end;
 }
 
+.effects__irs {
+	margin: 0.5em 0 0;
+	padding: 1em 0 0;
+	border-top: 1px solid #379676;
+}
+
 .effects__button {
 	display: block;
 	-ms-flex: none;
@@ -958,7 +999,7 @@ we use margins because transforms will be applied dynamically */
 	height: 4em;
 	margin: 0.5em 0;
 	padding: 1em;
-	color: #8EE3EF;
+	color: #37a07c;
 	border: 0;
 	background: none;
 	-webkit-box-flex: 0;
