@@ -149,8 +149,6 @@
 			playStatus : this.el.querySelector('.player__controls > button.player-button--playstop .icon--play'),
 			stopStatus : this.el.querySelector('.player__controls > button.player-button--playstop .icon--stop'),
 			rotate : this.el.querySelector('.player__controls > button.player-button--rotate'),
-			vinylFx : this.el.querySelector('.effects > button.effects__button--vinyleffect'),
-			roomFx : [].slice.call(this.el.querySelectorAll('.effects > .effects__irs > .effects__button'))
 		};
 		// Record Info
 		this.infoElems = {
@@ -864,46 +862,6 @@
 		classie.remove(status === 'stop' ? this.ctrls.playStatus : this.ctrls.stopStatus, 'icon--hidden');
 		classie.add(status === 'stop' ? this.ctrls.stopStatus : this.ctrls.playStatus, 'icon--hidden');
 	};
-
-	/**
-	 * Add/Remove the vinyl scratch effect.
-	 */
-	Turntable.prototype._ctrlVinylFx = function() {
-		var hasFx = classie.has(this.ctrls.vinylFx, 'effects__button--active');
-
-		this.setNoise(!hasFx);
-
-		if( hasFx ) {
-			classie.remove(this.ctrls.vinylFx, 'effects__button--active');
-		}
-		else {
-			classie.add(this.ctrls.vinylFx, 'effects__button--active');
-		}
-	};
-
-	/**
-	 * Set a room effect.
-	 */
-	Turntable.prototype._ctrlRoomFx = function(ctrl, fx) {
-		this.ctrls.roomFx.forEach(function(ctrlEl) {
-			if( classie.has(ctrlEl, 'effects__button--active') && ctrlEl != ctrl ) {
-				classie.remove(ctrlEl, 'effects__button--active');
-			}
-		});
-
-		var hasFx = classie.has(ctrl, 'effects__button--active');
-
-		if( hasFx ) {
-			classie.remove(ctrl, 'effects__button--active');
-			this.setEffect(-1);
-		}
-		else {
-			classie.add(ctrl, 'effects__button--active');
-			this.setEffect(fx);
-		}
-	};
-
-
 
 	/**
 	 * Record obj.
