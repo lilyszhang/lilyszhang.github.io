@@ -816,18 +816,6 @@
 			}
 		});
 
-		// Vinyl fx.
-		this.ctrls.vinylFx.addEventListener('click', function() {
-			self._ctrlVinylFx();
-		});
-
-		// Room fx
-		this.ctrls.roomFx.forEach(function(ctrl, pos) {
-			ctrl.addEventListener('click', function() {
-				self._ctrlRoomFx(ctrl, pos);
-			})
-		});
-
 		this.touchStartFix = function() {
 			var buffer = self.audioCtx.createBuffer(1, 1, 22050);
 			var source = self.audioCtx.createBufferSource();
